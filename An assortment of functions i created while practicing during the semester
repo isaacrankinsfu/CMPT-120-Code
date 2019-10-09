@@ -1,0 +1,141 @@
+def palindrome(word):
+  for i in range(len(word)):
+    if word[i] != word[len(word)-1-i]:
+      return False
+  return True
+print(palindrome("tasty watermelon"))
+print(palindrome("cats are furry yrruf era stac"))
+
+def frombinary(n):
+  counter = 0
+  for i in range(len(n)):
+    bit_index = i
+    bit = n[len(n)-1-i]
+    if bit == "1":
+      counter += 2**bit_index
+  return counter
+print(frombinary("00010111"))
+
+def tobinary(n):
+  binary = "01"
+  if n < 2:
+    return binary[n]
+  else:
+    return tobinary(n//2) + binary[n%2]
+print(tobinary(23))
+
+def sum_list(lists):
+  if len(lists) == 1:
+    return lists[0]
+  else:
+    return lists[0] + sum_list(lists[1:])
+print(sum_list([1,4,7,3,8,9,2]))
+
+unsorted = [2,4,6,8,0,1,3,5,7,9]
+def sort(lists):
+  for i in range(len(lists)):
+    minimum = lists[i]
+    index = i
+    for j in range(i+1,len(lists)):
+      if lists[j] < minimum:
+        minimum = lists[j]
+        index = j
+    lists[i],lists[index] = lists[index],lists[i]
+  return lists
+
+nowsorted = sort(unsorted)
+print(nowsorted)
+
+def binary_search(sorted_list,item):
+  found = False
+  first = 0
+  last = len(sorted_list)-1
+
+  while (not found) and first <= last:
+    mid = (first + last)//2
+    if sorted_list[mid] == item:
+      found = True
+    elif sorted_list[mid] < item:
+      first = mid + 1
+    else:
+      last = mid - 1
+  return found
+print(binary_search(nowsorted,6))
+print(binary_search(nowsorted,60))
+
+
+
+unsorted = [2,4,9,7,6,8,4,0,1,3,5,7,9]
+def linear(lists,item):
+  for i in range(len(lists)):
+    if lists[i] == item:
+      return True
+  return False
+print(linear(unsorted,4))
+
+def indices(lists,item):
+  indices = []
+  for i in range(len(lists)):
+    if lists[i] == item:
+      indices.append(i)
+  return indices
+print(indices(unsorted,4))
+
+def print_special(n):
+  if n >= 1:
+    print(n)
+    print_special(n-1)
+    print(n)
+print_special(5)
+
+print(type(3.5*2))
+print(range(0) == range(5,-10))
+print(range(1) == [0])
+print(type(2**3))
+for i in range(1):
+  print(i)
+print(type(9**(1/2)))
+print(9**(1/2))
+
+def sel(lists):
+  for i in range(len(lists)):
+    maximum = lists[i]
+    index = i
+    for j in range(i+1,len(lists)):
+      if lists[j] > maximum:
+        maximum = lists[j]
+        index = j
+    lists[index],lists[i] = lists[i],lists[index]
+  return lists
+
+maxtomin = sel(unsorted)
+print(maxtomin)
+
+def binary(a,item):
+  found = False
+  first = 0
+  last = len(a)-1
+
+  while (not found) and first <= last:
+    half = (first + last)//2
+    if a[half] == item:
+      found = True
+    elif a[half] > item:
+      first = half + 1
+    else:
+      last = half - 1
+  return found
+print(binary(maxtomin,9))
+
+
+
+
+def switch(word):
+  if len(word) == 1:
+    return word[0]
+  else:
+    return switch(word[1:]) + word[0]
+print(switch("big titties"))
+aa = "i love waffles"
+print(switch(aa))
+print("{} {}".format(aa,switch(aa)))
